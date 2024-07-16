@@ -1,0 +1,32 @@
+TASK: Write a query that creates two tables - mountains and peaks.
+
+Link their fields properly.
+
+The tables should have:
+
+Mountains:
+
+id
+
+name
+
+Peaks:
+
+id
+
+name
+
+mountain_id
+
+CREATE TABLE `mountains` (
+`id` INT PRIMARY KEY AUTO_INCREMENT,
+`name` VARCHAR(45)
+);
+
+CREATE TABLE `peaks` (
+`id` INT PRIMARY KEY AUTO_INCREMENT,
+`name` VARCHAR(10),
+`mountain_id` INT,
+FOREIGN KEY(`mountain_id`)
+REFERENCES `mountains`(`id`)
+);

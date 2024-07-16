@@ -1,0 +1,15 @@
+TASK: Use the database that is called "Camp Database".
+
+Write a query that retrieves information about SoftUni Camp's transport organization.
+
+It should get information about the drivers (name and id) and their vehicle_type.
+
+
+
+
+
+SELECT v.`driver_id`,v.`vehicle_type`
+,CONCAT_WS(' ', c.`first_name`, c.`last_name`) AS 'driver_name'
+FROM `vehicles` AS v
+JOIN `campers` AS c
+ON c.`id` = v.`driver_id`;
