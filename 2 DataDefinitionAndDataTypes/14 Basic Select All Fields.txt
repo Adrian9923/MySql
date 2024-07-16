@@ -1,0 +1,7 @@
+TASK: Use the soft_uni database and select all records from towns, then from departments and finally from the employees table.
+
+
+
+select * from `towns`;
+select * from `departments`;
+select * from `employees`;

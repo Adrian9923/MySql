@@ -1,0 +1,41 @@
+TASK: Using SQL queries create table "people" with columns:
+
+id - unique number for every person, there will be no more than 2. (Auto incremented)
+
+name - the full name of the person will be no longer than 200 Unicode characters. (Not null)
+
+picture - image with size up to 2 MB. (Allow nulls)
+
+height - In meters. Real number precise up to 2 digits after the floating point. (Allow nulls)
+
+weight - In kilograms. Real number precise up to 2 digits after the floating point. (Allow nulls)
+
+gender - Possible values are m or f. (Not null)
+
+birthdate - (Not null)
+
+biography - detailed biography of the person, it can contain the max allowed Unicode characters. (Allow nulls)
+
+Make id primary key. Populate the table with 5 records.
+
+
+
+
+CREATE TABLE `people` (
+`id` INT AUTO_INCREMENT PRIMARY KEY UNIQUE,
+`name` VARCHAR(200) NOT NULL,
+`picture` INT,
+`height` DECIMAL(4,2),
+`weight` DECIMAL(4,2),
+`gender` CHAR(1) NOT NULL,
+`birthdate` DATE NOT NULL,
+`biography` TEXT
+);
+
+
+INSERT INTO `people`
+VALUES ('1','John', null, 1.80, 75.00, 'm', '1990-01-01', 'John Doe is a computer programmer from San Francisco, USA.'),
+  ('2','Ja', null, 1.65, 60.00, 'f', '1995-05-03', 'Jane Smith is a nurse from London, UK.'),
+  ('3','Bob', null, null, 85.00, 'm', '1985-12-25', null),
+  ('4','Sarah', null, 1.70, null, 'f', '1998-07-15', 'Sarah Lee is a student from Seoul, South Korea.'),
+  ('5','JAck', null, 1.70, null, 'f', '1998-07-15', 'Jack Jones is a student from Seoul, South Korea.');

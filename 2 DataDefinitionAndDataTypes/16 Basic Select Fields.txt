@@ -1,0 +1,13 @@
+Task: Modify the queries from the previous problem to show only some of the columns, as follows:
+
+towns - name
+
+departments - name
+
+employees - first_name, last_name, job_title, salary
+
+
+
+select `name` from `towns` order by `name`;
+select `name` from `departments` order by `name`;
+select `first_name`, `last_name`, `job_title`, `salary` from `employees` order by `salary` desc;

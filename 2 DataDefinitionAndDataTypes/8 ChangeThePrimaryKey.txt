@@ -1,0 +1,27 @@
+TASK: Using SQL queries modify table users from the previous task.
+
+First remove current primary key then create a new primary key that is a combination of their id and username.
+
+The initial primary key is pk_users.
+
+
+ASA E BUN:
+ALTER TABLE `users` DROP PRIMARY KEY, ADD PRIMARY KEY(`id`, `username`);
+
+
+
+
+
+ALTER TABLE `users`
+DROP PRIMARY KEY;
+
+ALTER TABLE `users`
+ADD CONSTRAINT pk_id_username
+PRIMARY KEY(`id`, `username`);
+
+
+SELECT CONSTRAINT_NAME
+FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+WHERE TABLE_SCHEMA = 'minions'
+  AND TABLE_NAME = 'users'
+  AND CONSTRAINT_NAME LIKE 'PRIMARY';

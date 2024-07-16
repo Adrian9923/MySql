@@ -1,0 +1,32 @@
+Using SQL queries create table users with columns:
+
+id - unique number for every user. There will be no more than 2. (Auto incremented)
+
+username - unique identifier of the user, will be no more than 30 characters long (non Unicode). (Required)
+
+password - no longer than 26 characters (non Unicode). (Required)
+
+profile_picture - image with a size up to 900 KB.
+
+last_login_time
+
+is_deleted - shows if the user deleted his/her profile. Possible states are true or false.
+
+Make id primary key. Populate the table with 5 records.
+
+
+CREATE TABLE `users` (
+`id` INT AUTO_INCREMENT PRIMARY KEY UNIQUE,
+`username` VARCHAR(30) NOT NULL,
+`password` VARCHAR(26) NOT NULL,
+`profile_picture` INT,
+`last_login_time` TIME,
+`is_deleted` BOOLEAN
+);
+
+INSERT INTO `users`
+VALUES ('1','John Doe', 'pass1', '20', '14:45:50', TRUE),
+  ('2','John Smith', 'pass2', '25', '14:40:50', FALSE),
+  ('3','Derek Melbin', 'pass3', '10', '10:45:50', TRUE),
+  ('4','Peter Pan', 'pass4', '30', '22:45:50', FALSE),
+  ('5','John Dona', 'pass5', '40', '20:45:50', TRUE);

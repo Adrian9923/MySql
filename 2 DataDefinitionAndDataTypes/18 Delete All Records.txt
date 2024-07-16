@@ -1,0 +1,4 @@
+TASK: Use an SQL query to delete all records from the table called employees.
+
+
+delete from `employees`;

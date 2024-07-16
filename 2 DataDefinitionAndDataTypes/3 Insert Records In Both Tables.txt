@@ -1,0 +1,11 @@
+TASK: 
+Populate both tables with sample records given in the table below.
+
+
+INSERT INTO `towns`
+VALUES (1, 'London'), (2, 'Barcelona'), (3, 'Sofia');
+
+INSERT INTO `minions`
+VALUES (1, 'Kevin', 22, 1), (2, 'Bob', 15, 2), (3, 'Steward', NULL,3);
+
+SELECT COALESCE(age, '') FROM `minions`; // OR ISNULL -> if value is NULL show an empty String instead of NULL

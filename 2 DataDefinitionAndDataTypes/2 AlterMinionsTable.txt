@@ -1,0 +1,20 @@
+TASK: Before continuing with the next assignments, rename the town_id to id using the Workbench's GUI.
+
+Change the structure of the Minions table to have a new column called town_id that should be of the same type as the id column of the towns table.
+
+Add a new constraint that makes town_id a foreign key and references the id column of the towns table.
+
+
+
+
+
+ALTER TABLE `towns`
+RENAME COLUMN `town_id` to `id`;
+
+ALTER TABLE `minions`
+ADD `town_id` INT;
+
+ALTER TABLE `minions`
+ADD CONSTRAINT fk_minions_towns
+FOREIGN KEY (`town_id`)
+REFERENCES `towns`(`id`);

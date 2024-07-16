@@ -1,0 +1,91 @@
+TASK: Using SQL queries create the Movies database with the following entities:
+
+directors (id, director_name, notes)
+
+director_name cannot be null
+
+genres (id, genre_name, notes)
+
+genre_name cannot be null
+
+categories (id, category_name, notes)
+
+category_name cannot be null
+
+movies (id, title, director_id, copyright_year, length, genre_id, category_id, rating, notes)
+
+title cannot be null
+
+Set appropriate data types for each column.
+
+Set a primary key to each table.
+
+Populate each table with 5 records.
+
+Make sure the columns that are present in any 2 tables would be of the same data type.
+
+Define which fields are required and which are optional.
+
+
+
+
+CREATE TABLE `directors` (
+`id` INT PRIMARY KEY,
+`director_name` VARCHAR(50) NOT NULL,
+`notes` TEXT
+);
+
+CREATE TABLE `genres` (
+`id` INT PRIMARY KEY,
+`genre_name` VARCHAR(50) NOT NULL,
+`notes` TEXT
+);
+
+CREATE TABLE `categories` (
+`id` INT PRIMARY KEY,
+`category_name` VARCHAR(50) NOT NULL,
+`notes` TEXT
+);
+
+CREATE TABLE `movies` (
+`id` INT PRIMARY KEY,
+`title` VARCHAR(50) NOT NULL,
+`director_id` INT,
+`copyright_year` YEAR,
+`length` DOUBLE,
+`genre_id` INT,
+`category_id` INT,
+`rating` DECIMAL,
+`notes` TEXT
+);
+
+INSERT INTO `directors`
+VALUES (1, 'SMith Jones', 'Hello') , (2, 'Samuel Jones', 'Hello2'),
+(3, 'Stock James', 'Hello3'), (4, 'Hingrid SMith', 'Hello4'), (5, 'Brad Pitts', 'Hello5');
+
+INSERT INTO `genres`
+VALUES (1, 'action', 'Hello') , (2, 'comedy', 'Hello2'),
+(3, 'thriller', 'Hello3'), (4, 'adventure', 'Hello4'), (5, 'familly', 'Hello5');
+
+INSERT INTO `categories`
+VALUES (1, 'film', 'Hello') , (2, 'series', 'Hello2'),
+(3, 'film', 'Hello3'), (4, 'animation', 'Hello4'), (5, 'series', 'Hello5');
+
+INSERT INTO `movies`
+VALUES (1, 'Sparta', 1, '1999', 1, 1, 1 , 4.50, 'Hello') , (2, 'Tarzan', 2, '1990', 2, 2, 2 , 6.78, 'Hello2'),
+(3, 'The Last Of Us', 3, '2023', 2, 3, 3 , 8.50, 'Hello3'), (4, 'Harry Potter', 4, '2007', 2, 4, 4 , 9.15, 'Hello4'), (5, 'Madagascar', 5, '2001', 2, 5, 5 , 7.50, 'Hello5');
+
+
+
+DAca uit sa pun primary key cand creez tabelul fac asa:
+ALTER TABLE `categories`
+ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `directors`
+ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `genres`
+ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `movies`
+ADD PRIMARY KEY (`id`);

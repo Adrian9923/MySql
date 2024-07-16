@@ -1,0 +1,154 @@
+TASK: Create a database called soft_uni.
+
+This database will be used in the future tasks.
+
+It should hold information about
+
+towns (id, name)
+
+addresses (id, address_text, town_id)
+
+departments (id, name)
+
+employees (id, first_name, middle_name, last_name, job_title, department_id, hire_date, salary, address_id)
+
+The Id columns are auto incremented starting from 1 and increased by 1 (1, 2, 3, 4…).
+
+Make sure you use appropriate data types for each column.
+
+Add primary and foreign keys as constraints for each table.
+
+Use only SQL queries.
+
+Define which fields are always required and which are optional.
+
+Use the SoftUni database and insert some data into it using SQL queries.
+
+name	
+job_title	
+department	
+hire_date	
+salary
+Kyrie Keefe Swanson
+
+.NET Developer
+
+Software Development
+
+01/02/2013
+
+3500.00
+
+Tamsyn Corrina Masterson
+
+Senior Engineer
+
+Engineering
+
+02/03/2004
+
+4000.00
+
+Sonia Eddy Christians
+
+Intern
+
+Quality Assurance
+
+28/08/2016
+
+525.25
+
+Petal Hylda Cantrell
+
+CEO
+
+Sales
+
+09/12/2007
+
+3000.00
+
+Faye Emberly Paddon
+
+Intern
+
+Marketing
+
+28/08/2016
+
+599.88
+
+towns: Berlin, Madrid, Sofia, Lille,
+
+departments: Engineering, Sales, Marketing, Software Development, Quality Assurance
+
+employees: mai sus
+
+
+
+create schema soft_uni;
+use soft_uni;
+
+create table `towns` (
+`id` int auto_increment primary key not null,
+`name` varchar(50)
+);
+
+create table `addresses` (
+`id` int auto_increment primary key not null,
+`address_text` text,
+`town_id` int
+);
+
+create table `departments` (
+`id` int auto_increment primary key not null,
+`name` varchar(50)
+);
+
+create table `employees` (
+`id` int auto_increment primary key not null,
+`first_name` varchar(50),
+`middle_name` varchar(50),
+`last_name` varchar(50),
+`job_title` varchar(50),
+`department_id` int,
+`hire_date` datetime,
+`salary` decimal(6,2),
+`address_id` int
+);
+
+alter table `addresses`
+add constraint fk_addresses_towns
+foreign key (`town_id`)
+references `towns`(`id`);
+
+alter table `employees`
+add constraint fk_employees_addresses
+foreign key (`address_id`)
+references `addresses`(`id`);
+
+insert into `towns`
+values (1, 'Berlin'), (2, 'Madrid'),(3, 'Sofia'), (4, 'Lille');
+
+insert into `departments`
+values (1, 'Engineering'), (2, 'Sales'), (3, 'Marketing'), (4, 'Software Development'), (5, 'Quality Assurance');
+
+insert into `addresses`
+values (1, 'This is the first address', 1),
+(2, 'A second address', 2),
+(3, 'A third address', 3),
+(4, 'Another address', 2),
+(5, 'The last address', 4);
+
+insert into `employees`
+values (1, 'Kyrie', 'Keefe', 'Swanson', '.NET Developer', 4, '2013-02-01', 3500.00, 1),
+(2, 'Tamsyn', 'Corrina', 'Masterson', 'Senior Engineer', 1, '2004-03-02', 4000.00, 2),
+(3, 'Sonia', 'Eddy', 'Christians', 'Intern', 5, '2016-08-28', 525.25, 3),
+(4, 'Petal', 'Hylda', 'Cantrell', 'CEO', 2, '2007-12-09', 3000.00, 4),
+(5, 'Faye', 'Emberly', 'Paddon', 'Intern', 3, '2016-08-28', 599.88, 5);
+
+
+
+
+

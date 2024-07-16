@@ -1,0 +1,22 @@
+Task:  Use the softuni database and increase the salaries of all employees by 10%. Then select only the salary column from the employees table.
+
+
+update `employees`
+set `salary` = salary * 1.1;
+select `salary` from `employees`;
+
+
+
+
+if I dont want to use WHERE clause I can do this:
+SET SQL_SAFE_UPDATES=0;
+update `employees`
+set `salary` = salary * 1.1;
+select `salary` from `employees`;
+
+
+
+Original syntax:(exmple from google)
+update your_table
+set price = price * 1.2
+where id = (some condition)

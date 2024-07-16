@@ -1,0 +1,6 @@
+TASK: Delete all tables from the minions database using an SQL query.
+
+
+
+
+DROP TABLE `minions`, `towns`;

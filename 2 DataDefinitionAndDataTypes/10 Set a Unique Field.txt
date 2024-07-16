@@ -1,0 +1,16 @@
+TASK: Using SQL queries modify the users table.
+
+Remove the username field from the primary key so only the id field would be primary key.
+
+Now add a unique constraint to the username field.
+
+The initial primary key name is pk_users.
+
+
+
+
+ALTER TABLE `users` DROP PRIMARY KEY, ADD PRIMARY KEY(`id`);
+
+ALTER TABLE `users`
+ADD CONSTRAINT `unique_username`
+UNIQUE (`username`);

@@ -1,0 +1,12 @@
+TASK : Modify the queries from the previous problem by sorting:
+
+towns - alphabetically by name
+
+departments - alphabetically by name
+
+employees - descending by salary
+
+
+select * from `towns` order by `name`;
+select * from `departments` order by `name`;
+select * from `employees` order by `salary` desc;

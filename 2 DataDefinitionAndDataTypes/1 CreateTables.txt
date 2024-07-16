@@ -1,0 +1,19 @@
+TASK: In the newly created Minions database add a table minions (id, name, age).
+
+Then add a new table called towns (town_id, name).
+
+Set the id and town_id columns of both tables to be primary key as constraint, id's must be set to auto increment.
+
+
+
+
+CREATE TABLE `minions` (
+`id` INT AUTO_INCREMENT PRIMARY KEY,
+`name` VARCHAR(50),
+`age` INT NOT NULL
+);
+
+CREATE TABLE `towns` (
+`town_id` INT AUTO_INCREMENT PRIMARY KEY,
+`name` VARCHAR(50)
+);

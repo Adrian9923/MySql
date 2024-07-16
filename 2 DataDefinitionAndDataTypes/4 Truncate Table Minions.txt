@@ -1,0 +1,7 @@
+TASK: Delete all data from the minions table using an SQL query.
+
+
+ALTER TABLE `minions`
+DROP CONSTRAINT `fk_minions_towns`;
+
+TRUNCATE TABLE `minions`;

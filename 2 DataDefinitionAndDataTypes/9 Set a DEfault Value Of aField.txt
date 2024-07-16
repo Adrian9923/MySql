@@ -1,0 +1,5 @@
+TASK: Using SQL queries, modify the default value of last_login_time field to be the current time.
+
+
+ALTER TABLE `users`
+ALTER COLUMN last_login_time SET DEFAULT (CURTIME());
