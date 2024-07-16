@@ -1,0 +1,23 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write a query that selects the following fields:
+
+employee_id
+
+first_name
+
+manager_id
+
+manager_name
+
+Filter all employees with a manager who has an id equal to 3 or 7.
+
+Return all rows sorted by employee first_name in ascending order.
+
+
+
+
+SELECT `employee_id`, `first_name`, `manager_id`
+FROM `employees`
+WHERE `manager_id` IN(3, 7)
+ORDER BY `first_name`;

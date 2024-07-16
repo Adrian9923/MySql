@@ -1,0 +1,13 @@
+TASK: Use SoftUni Database for this problem.
+
+Write a query that counts the employees who receive a salary higher than the average.
+
+Example
+count
+
+88
+
+
+SELECT COUNT(`employee_id`) AS 'count'
+FROM `employees`
+WHERE `salary` > (SELECT AVG(`salary`) FROM `employees`);

@@ -1,0 +1,27 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write a query that selects the following fields:
+
+employee_id
+
+first_name
+
+Filter only the employees without a project.
+
+Return the first 3 rows sorted by employee_id in descending order.
+
+!!!!!!!!!!!!!!! Asta nu am reusit sa o fac
+
+SELECT e.`employee_id`, e.`first_name`
+FROM `employees` AS e
+JOIN `employees_projects` AS p
+ON e.`employee_id` = p.`employee_id`
+WHERE e.`manager_id` IS NULL
+ORDER BY e.`employee_id` DESC
+LIMIT 3;
+
+SELECT e.`employee_id`, e.`first_name`
+FROM `employees` AS e
+WHERE e.`manager_id` IS NULL
+ORDER BY e.`employee_id` DESC
+LIMIT 3;

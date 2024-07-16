@@ -1,0 +1,4 @@
+SELECT c.`id` AS 'course_id', c.`name` AS 'course_name', s.`id` AS 'student_id', s.`name` AS 'student_name' 
+FROM `students` AS s
+CROSS JOIN `courses` AS c
+ORDER BY c.`id`, s.`id`;

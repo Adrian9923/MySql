@@ -1,0 +1,28 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write a query that selects the following fields:
+
+employee_id
+
+first_name
+
+project_name
+
+Return all the projects of employees with id equal to 24.
+
+If the project has started after 2005 inclusively, the return value should be NULL.
+
+Sort the result by project_name alphabetically.
+
+
+
+
+SELECT e.`employee_id`, e.`first_name`,
+CASE WHEN p.`start_date` >= '2005-01-01' THEN NULL ELSE p.`name` END AS 'project_name'
+FROM `employees` AS e
+JOIN `employees_projects` ep
+ON e.`employee_id` = ep.`employee_id`
+JOIN `projects` AS p
+ON ep.`project_id` = p.`project_id`
+WHERE  e.`employee_id` = 24
+ORDER BY `project_name`;

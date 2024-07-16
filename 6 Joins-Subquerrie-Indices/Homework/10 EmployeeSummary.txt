@@ -1,0 +1,22 @@
+TASK: Write a query that selects the following fields:
+
+employee_id
+
+employee_name
+
+manager_name
+
+department_name
+
+Show the first 5 employees (only for employees who have a manager) with their managers and the departments they are in (show the departments of the employees).
+
+Order by employee_id.
+
+
+SELECT e.`employee_id`, CONCAT_WS(' ',  e.`first_name`, e.`last_name`) AS 'employee_name'
+, d.`name` AS 'department_name'
+FROM `employees` AS e
+JOIN `departments` AS d
+ON e.`department_id` = d.`department_id`
+ORDER BY e.`employee_id`
+LIMIT 5;

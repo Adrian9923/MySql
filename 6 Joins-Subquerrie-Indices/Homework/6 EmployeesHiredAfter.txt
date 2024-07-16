@@ -1,0 +1,38 @@
+TASK:
+Write a query that selects the following fields:
+
+first_name
+
+last_name
+
+hire_date
+
+dept_name
+
+Filter only the employees that were hired after 1/1/1999 and work either in the "Sales" or the "Finance" departments.
+
+Sort the result by hire_date in ascending order.
+
+SELECT e.`first_name`, e.`last_name`,
+ e.`hire_date`, d.`name` AS 'dept_name'
+FROM `employees` AS e
+JOIN `departments` AS d
+ON e.`department_id` = d.`department_id`
+WHERE e.`hire_date` > '1999-01-01' AND d.`department_id` IN(3, 10)
+ORDER BY e.`hire_date`;
+
+
+
+
+
+
+
+V2:
+
+SELECT e.`first_name`, e.`last_name`,
+DATE_FORMAT(e.`hire_date`, '%Y-%m-%d %H:%i:%s') AS 'hire_date', d.`name` AS 'dept_name'
+FROM `employees` AS e
+JOIN `departments` AS d
+ON e.`department_id` = d.`department_id`
+WHERE e.`hire_date` > '1999-01-01' AND d.`department_id` IN(3, 10)
+ORDER BY e.`hire_date`;

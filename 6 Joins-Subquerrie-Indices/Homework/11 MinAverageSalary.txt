@@ -1,0 +1,17 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write a query that returns the value of the lowest average salary of all departments.
+
+Example
+min_average_salary
+10866.6666
+
+
+
+
+SELECT MIN(`avg_salary`) AS 'min_average_salary'
+FROM (
+  SELECT AVG(`salary`) AS 'avg_salary'
+  FROM `employees`
+  GROUP BY `department_id`
+) AS `department_avg_salaries`;

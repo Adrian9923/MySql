@@ -1,0 +1,30 @@
+TASK: Write a query that selects the following fields:
+
+first_name
+
+last_name
+
+town
+
+address_text
+
+Sort the result by first_name in ascending order then by last_name.
+
+Select first 5 employees.
+
+
+
+SELECT 
+    e.`first_name`,
+    e.`last_name`,
+    t.`name` AS 'town',
+    a.`address_text`
+FROM 
+    `employees` AS e
+JOIN 
+    `addresses` AS a ON e.`address_id` = a.`address_id`
+JOIN 
+    `towns` AS t ON a.`town_id` = t.`town_id`
+ORDER BY 
+    e.`first_name` ASC, e.`last_name` ASC
+LIMIT 5;

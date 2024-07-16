@@ -1,0 +1,9 @@
+SELECT s.`name` AS `student_name`, c.`name` AS `course_name`
+FROM `students` AS s
+LEFT JOIN `courses` AS c
+ON s.`course_id` = c.`id`
+UNION
+SELECT s.`name` AS `student_name`, c.`name` AS `course_name`
+FROM `students` AS s
+RIGHT JOIN `courses` AS c
+ON s.`course_id` = c.`id`;
