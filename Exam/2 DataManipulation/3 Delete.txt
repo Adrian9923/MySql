@@ -1,0 +1,14 @@
+TASK: Some of the clients have not used the services of our company recently, so we need to remove them from the database.
+
+Delete all clients from the clients table that do not have any courses and the count of the characters in the full_name field is more than 3 characters.
+
+CHAT GPT DAR NU e BUN
+DELETE FROM `clients`
+WHERE `id` NOT IN (
+    SELECT c.`id`
+    FROM `clients` AS c
+    LEFT JOIN `courses` AS co ON c.`id` = co.`client_id`
+    GROUP BY c.`id`
+    HAVING COUNT(co.`client_id`) > 0
+)
+AND CHAR_LENGTH(`full_name`) > 3;

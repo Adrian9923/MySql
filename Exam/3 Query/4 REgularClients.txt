@@ -1,0 +1,22 @@
+TASK: Extract the regular clients, who have ridden in more than one car and the second letter of their full name is 'a'.
+
+Select the full name, the count of cars they have been in and the total sum of all courses.
+
+Order the clients by their full_name.
+
+Required Columns
+
+"full_name"
+
+"count_of_cars"
+
+"total_sum"
+
+
+SELECT cl.`full_name`, COUNT(co.`car_id`) AS 'count_of_cars', SUM(co.`bill`) AS 'total_sum'
+FROM `clients` AS cl
+JOIN `courses` AS co ON co.`client_id` = cl.`id`
+WHERE SUBSTRING(cl.`full_name` FROM 2 FOR 1) = 'a'
+GROUP BY co.`client_id`
+HAVING `count_of_cars` > 1
+ORDER BY cl.`full_name`;

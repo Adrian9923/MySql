@@ -1,0 +1,41 @@
+TASK: The headquarters want us to write a query that shows the complete information about all courses in the database.
+
+The information that they need is the address, if the course is made in the Day (between 6 and 20 inclusive) or in the Night (between 21 and 5 inclusive), the bill of the course, the full name of the client, the car maker, the model, and the name of the category.
+
+Order the results by course id.
+
+Required Columns
+
+"name" (address)
+
+"day_time"
+
+"bill"
+
+"full_name" (client)
+
+"make"
+
+"model"
+
+"category_name" (category)
+
+
+
+SELECT a.`name`, 
+CASE
+        WHEN EXTRACT(HOUR FROM co.`start`) BETWEEN 6 AND 20 THEN 'Day'
+        ELSE 'Night'
+    END AS 'day_time',
+co.`bill`,
+cl.`full_name`,
+c.`make`,
+c.`model`,
+categ.`name`
+FROM `addresses` AS a
+JOIN `courses` AS co ON co.`from_address_id` = a.`id`
+JOIN `clients` AS cl ON cl.`id` = co.`client_id`
+JOIN `cars` AS c ON c.`id` = co.`car_id`
+JOIN `categories` AS categ ON categ.`id` = c.`category_id`
+ORDER BY co.`id`;
+

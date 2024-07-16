@@ -1,0 +1,16 @@
+TASK: Extract the information about all the cars.
+
+Order the results by their id.
+
+Required Columns:
+
+"make"
+
+"model"
+
+"condition"
+
+
+SELECT `make`, `model`, `condition` 
+FROM `cars`
+ORDER BY `id`;

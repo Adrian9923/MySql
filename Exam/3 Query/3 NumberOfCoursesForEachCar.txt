@@ -1,0 +1,28 @@
+TASK: Extract all the cars and the count of their courses from the database.
+
+Also, display the average bill of each course by the car, rounded to the second digit.
+
+Order the results in descending order by the count of courses, then by the car's id.
+
+Skip the cars with exactly 2 courses.
+
+Required Columns
+
+"car_id"
+
+"make"
+
+"mileage"
+
+"count_of_courses"
+
+"avg_bill"
+
+
+SELECT c.`id`, c.`make`, c.`mileage`,
+COUNT(co.`car_id`) AS 'count_of_courses', ROUND(AVG(co.`bill`),2) AS 'avg_bill'
+FROM `cars` AS c
+LEFT JOIN `courses` AS co ON co.`car_id` = c.`id`
+GROUP BY c.`id`
+HAVING `count_of_courses` NOT IN(2)
+ORDER BY `count_of_courses` DESC, c.`id`;

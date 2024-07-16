@@ -1,0 +1,28 @@
+TASK: When drivers are not working and need a taxi to transport them, they will also be registered at the database as customers.
+
+You will have to insert records of data into the clients table based on the drivers table.
+
+For all drivers with an id between 10 and 20 (both inclusive), insert data in the clients table with the following values:
+
+"full_name" - Get first and last name of the driver separated by single space
+
+"phone_number" - Set it to start with (088) 9999 followed by the driver_id multiplied by 2
+
+Example - the phone_number of the driver with an id 10 is (088) 999920
+
+
+
+
+INSERT INTO `clients`(`full_name`, `phone_number`)
+SELECT CONCAT_WS(' ', d.`first_name`, d.`last_name`) AS 'full_name',
+CONCAT('(088)9999', d.`id` * 2) AS 'phone_number'
+FROM `drivers` AS d
+WHERE d.`id` BETWEEN 10 AND 20;
+
+VERSIUNEA CHARGPT
+INSERT INTO clients (full_name, phone_number)
+SELECT CONCAT_WS(' ', d.first_name, d.last_name) AS full_name,
+       CONCAT('(088) 9999', LPAD(d.id * 2, 2, '0')) AS phone_number
+FROM drivers AS d
+WHERE d.id BETWEEN 10 AND 20;
+In this modified query, the LPAD function is used to pad the driver's ID multiplied by 2 with leading zeros if necessary to ensure a two-digit value. The phone_number column will now have the format (088) 9999XX, where XX is the padded driver ID multiplied by 2.
