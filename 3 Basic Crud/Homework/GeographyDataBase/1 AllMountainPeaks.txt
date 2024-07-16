@@ -1,0 +1,7 @@
+TASK: Use the database that is called "Geography Database".
+
+Display all mountain peaks in alphabetical order.
+
+
+SELECT `peak_name` FROM `peaks`
+ORDER BY `peak_name`;

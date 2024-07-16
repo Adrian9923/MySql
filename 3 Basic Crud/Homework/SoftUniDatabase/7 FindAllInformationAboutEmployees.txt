@@ -1,0 +1,9 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write an SQL query to find all information about employees whose job title is Sales Representative.
+
+Sort the results by id.
+
+SELECT * FROM `employees`
+WHERE `job_title` = 'Sales Representative'
+ORDER BY `employee_id`;

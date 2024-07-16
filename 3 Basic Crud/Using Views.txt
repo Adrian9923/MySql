@@ -1,0 +1,8 @@
+CREATE VIEW `v_result_set` AS
+SELECT CONCAT(e.`first_name`,' ', e.`last_name`) AS 'full_name', e.`age`
+FROM `employees` AS e
+WHERE e.`salary` > 2000 
+ORDER BY `age` DESC;
+
+DROP VIEW `v_result_set`;
+SELECT * FROM `v_result_set` ORDER BY `age` ASC;

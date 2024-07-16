@@ -1,0 +1,6 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write an SQL query to find all department names. Sort the information by id.
+
+
+SELECT `name` FROM `departments` ORDER BY `department_id`;

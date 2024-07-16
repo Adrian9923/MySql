@@ -1,0 +1,12 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write an SQL query to find the full name of all employees whose salary is 25000, 14000, 12500, or 23600.
+
+The full name is a combination of first, middle, and last names (separated by space).
+
+Call the resulting column Full Name.
+
+
+SELECT CONCAT_WS(' ', `first_name`, `middle_name`, `last_name`) AS 'Full Name'
+FROM `employees`
+WHERE `salary` IN (25000, 14000, 12500, 23600);

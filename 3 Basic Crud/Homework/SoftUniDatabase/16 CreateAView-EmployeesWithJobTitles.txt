@@ -1,0 +1,24 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write an SQL query to create a view called v_employees_job_titles with full employee name and job title.
+
+If an employee's middle name is NULL, replace it with an empty string ('').
+
+
+CREATE VIEW `v_employees_job_titles` AS
+SELECT CONCAT_WS(' ', `first_name`, `middle_name`, `last_name`) AS 'full_name', `job_title`
+FROM `employees`;
+SELECT * FROM `v_employees_job_titles`;
+
+
+SAU ASA: (ASTA E DE PE CHATGPT)
+CREATE VIEW v_employees_job_titles AS
+SELECT
+    CONCAT(first_name, ' ', COALESCE(middle_name, ''), ' ', last_name) AS full_name,
+    job_title
+FROM
+    employees
+JOIN
+    job_titles ON employees.job_title_id = job_titles.id;
+
+In the above query, the CONCAT function is used to combine the first_name, middle_name, and last_name columns into a single column full_name. The COALESCE function is used to replace the NULL middle names with an empty string (''). The JOIN operation is used to retrieve the corresponding job title for each employee based on the job_title_id column in the employees table and the id column in the job_titles table.

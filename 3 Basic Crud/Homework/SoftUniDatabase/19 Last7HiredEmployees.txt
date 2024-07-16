@@ -1,0 +1,10 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write an SQL query to find the seven employees that were hired last.
+
+Select their first and last name as well as their hire date.
+
+
+ SELECT `first_name`, `last_name`, `hire_date` FROM `employees`
+ ORDER BY `hire_date` DESC
+ LIMIT 7;

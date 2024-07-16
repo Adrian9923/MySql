@@ -1,0 +1,36 @@
+CREATE SCHEMA `department`;
+use department;
+
+create table `employees` (
+`id` int not null primary key auto_increment,
+`first_name` varchar(45) not null,
+`last_name` varchar(45) not null,
+`email` varchar(25) unique not null,
+`age` int not null
+);
+
+insert into `employees`
+values (1, 'Peter', 'Johannson', 'peterj@gmail.com', 25),
+(2, 'Martha', 'Hills', 'hills@gmail.com', 18),
+(3, 'Stephen', 'Helmutt', 'helmutt.stephen@gmail.com', 33),
+(4, 'Jasmine', 'Davis', 'jasmine@davis.com', 27);
+
+SELECT e.`first_name`, e.`last_name`, e.`age` FROM `employees` AS e;
+
+
+
+SELECT e.`first_name`, e.`last_name`, e.`age`
+FROM `employees` AS e
+ORDER BY `age` DESC;
+
+
+SELECT CONCAT_WS(' ', e.`first_name`, e.`last_name`) AS 'full_name', e.`age`
+FROM `employees` AS e
+ORDER BY `age` DESC;
+
+
+SAU ASA
+
+SELECT CONCAT(e.`first_name`,' ', e.`last_name`) AS 'full_name', e.`age`
+FROM `employees` AS e
+ORDER BY `age` DESC;

@@ -1,0 +1,18 @@
+TASK: Use the database that is called "Hotel Database".
+
+Write a query that deletes all employees who are in departments 1 or 2 from the employees table.
+
+Then select all the records from the employees table and order the results by id.
+
+V1: DELETE FROM `employees`
+WHERE `department_id` IN (1, 2);
+
+SELECT * FROM `employees`
+ORDER BY `id`;
+
+V2: 
+DELETE FROM `employees`
+WHERE `department_id` = 1 OR `department_id` = 2;
+
+SELECT * FROM `employees`
+ORDER BY `id`;

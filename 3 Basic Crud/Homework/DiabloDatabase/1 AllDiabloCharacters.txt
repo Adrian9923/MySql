@@ -1,0 +1,7 @@
+TASK: Use the database that is called "Diablo Database".
+
+Display the name of all character classes in alphabetical order.
+
+
+SELECT `name` FROM `characters`
+ORDER BY `name`;

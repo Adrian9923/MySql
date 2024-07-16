@@ -1,0 +1,9 @@
+Use the database that is called "SoftUni Database".
+
+Write an SQL query to find the first, middle, and last name of each employee.
+
+Sort the information by id.
+
+
+SELECT `first_name`, `middle_name`, `last_name` FROM `employees`
+ORDER BY `employee_id`;

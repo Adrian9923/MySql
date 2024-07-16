@@ -1,0 +1,10 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write an SQL query to create a view called v_employees_salaries.
+
+The view should include the first name , last name, and each employee's salary
+
+
+CREATE VIEW `v_employees_salaries` AS
+SELECT `first_name`, `last_name`, `salary` FROM `employees`;
+SELECT * FROM `v_employees_salaries`;

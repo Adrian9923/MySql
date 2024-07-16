@@ -1,0 +1,13 @@
+TASK: Use the database that is called "Geography Database".
+
+Find all countries along with information about their currency.
+
+Display the country name, country code, its currency: either Euro or Not Euro.
+
+Sort the results by country name alphabetically.
+
+
+SELECT `country_name`, `country_code`, 
+CASE WHEN `currency_code` = 'EUR' THEN 'Euro' ELSE 'Not Euro' END AS `currency`
+FROM `countries`
+ORDER BY `country_name`;

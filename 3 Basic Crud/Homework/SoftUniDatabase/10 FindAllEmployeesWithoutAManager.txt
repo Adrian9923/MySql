@@ -1,0 +1,8 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write an SQL query to find the first and last names of all employees that do not have a manager.
+
+
+
+SELECT `first_name`, `last_name` FROM `employees`
+WHERE `manager_id` IS NULL;	

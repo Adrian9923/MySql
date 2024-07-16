@@ -1,0 +1,14 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write an SQL query to find the email address of each employee. Consider that the email domain is softuni.bg.
+
+Name the the resulting column as full_email_address.
+
+The email addresses are not present in any of the tables but you can generate a list based on the first and last names of each employee, followed by the email domain.
+
+The emails should be in the following format: "John.Doe@softuni.bg".
+
+
+
+SELECT CONCAT(`first_name`, '.', `last_name`, '@softuni.bg') AS 'full_email_address'
+FROM `employees`;

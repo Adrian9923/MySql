@@ -1,0 +1,12 @@
+TASK: Use the database that is called "Hotel Database".
+
+Write a query to select all employees (id, first_name, last_name, job_title, and salary) whose salaries are higher than 1000.
+
+Order the results by id. Concatenate the first_name and last_name fields into a column called full_name.
+
+
+
+SELECT e.`id`, CONCAT_WS(' ', e.`first_name`, e.`last_name`) AS 'full_name', e.`job_title`, e.`salary`
+FROM `employees` AS e (sau `e`)
+WHERE e.`salary` > 1000
+ORDER BY e.`id`;

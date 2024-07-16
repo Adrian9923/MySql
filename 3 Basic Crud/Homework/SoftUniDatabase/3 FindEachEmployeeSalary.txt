@@ -1,0 +1,10 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write an SQL query to find the first name, last name, and salary of each employee.
+
+Sort the information by id.
+
+
+SELECT `first_name`, `last_name`, `salary` FROM `employees`
+ORDER BY `employee_id`;
+
