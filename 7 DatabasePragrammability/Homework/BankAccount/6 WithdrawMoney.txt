@@ -1,0 +1,30 @@
+TASK: Add a stored procedure usp_deposit_money(account_id, money_amount) used for processing transactions.
+
+Make sure to guarantee a valid and positive money_amount with a precision of four digits after the decimal point.
+
+The procedure should produce exact results, working with the specified precision.
+
+Example
+Here is the result for account_id = 1 and money_amount = 10.
+
+
+
+DELIMITER &&
+CREATE PROCEDURE `usp_withdraw_money`(`acc_id` INT, `money_amount` DECIMAL(19,4))
+
+BEGIN
+DECLARE `current_balance` DECIMAL(19, 4);
+IF `money_amount` > 0 THEN
+SELECT  `balance` INTO `current_balance`
+FROM `accounts`
+WHERE `id` = `acc_id`;		
+SET `current_balance` = `current_balance` - `money_amount`;
+UPDATE `accounts` SET `balance` = `current_balance` WHERE `id` = `acc_id`;
+
+SELECT `id` AS 'account_id', `account_holder_id`, `balance`
+    FROM `accounts`
+    WHERE `id` = `acc_id`;
+    END IF;
+END; &&
+
+CALL `usp_withdraw_money`(1,10); &&

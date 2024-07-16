@@ -1,0 +1,24 @@
+TASK: Use the database that is called "Bank Database".
+
+You are given a database schema with the following tables:
+
+account_holders(id (PK), first_name, last_name, ssn)
+
+accounts(id (PK), account_holder_id (FK), balance)
+
+Write a stored procedure usp_get_holders_full_name that selects the full names of all people.
+
+The result should be sorted alphabetically by full_name as a first criterion and by id in ascending order as a second criterion.
+
+
+
+DELIMITER &&
+CREATE PROCEDURE `usp_get_holders_full_name`()
+BEGIN
+SELECT CONCAT_WS(' ', `first_name`, `last_name`) AS 'full_name'
+FROM `account_holders`
+ORDER BY `full_name`, `id`;
+
+END; &&
+
+CALL `usp_get_holders_full_name`();&&

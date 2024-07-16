@@ -1,0 +1,39 @@
+TASK: Your task is to write a function ufn_calculate_future_value that accepts three parameters - sum (with a precision of 4 digits after the decimal point), yearly interest rate (double) and a number of years (int).
+
+It should calculate and return the future value of the initial sum.
+
+The result from the function must be a number with a precision of 4 digits after the decimal point.
+
+Using the following formula:
+FV = I * ((1 + R) ^ T)
+
+I - Initial sum
+
+R - Yearly interest rate
+
+T - Number of years
+Example
+Input	
+Output
+Initial sum: 1000
+
+7593.7500
+
+Yearly Interest rate: 50%
+
+Years: 5
+
+ufn_calculate_future_value(1000, 0.5, 5)
+
+
+
+
+DELIMITER &&
+CREATE FUNCTION `ufn_calculate_future_value`(`sum` DECIMAL(19,4), `yearly_interest_rate` DOUBLE, `number_of_years` INT) RETURNS DECIMAL(19,4) DETERMINISTIC
+BEGIN
+DECLARE `future_value` DECIMAL(19,4);
+SET `future_value` = `sum` * POWER((1 + `yearly_interest_rate`), `number_of_years`);
+RETURN `future_value`;
+END; &&
+
+SELECT `ufn_calculate_future_value`(1000,0.5,5); &&

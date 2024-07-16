@@ -1,0 +1,66 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write a function ufn_get_salary_level that receives the salary of an employee and returns their salary level.
+
+If the salary is < 30000, return "Low"
+
+If the salary is between 30000 and 50000 (inclusive), return "Average"
+
+If the salary is** > 50000**, return "High"
+
+Example
+Here is a list of employees living in Sofia.
+
+DELIMITER &&
+CREATE FUNCTION ufn_get_salary_level(salary DECIMAL(10, 2))
+RETURNS VARCHAR(10)
+BEGIN
+    DECLARE level VARCHAR(10);
+    
+    IF salary < 30000 THEN
+        SET level = 'Low';
+    ELSEIF salary >= 30000 AND salary <= 50000 THEN
+        SET level = 'Average';
+    ELSE
+        SET level = 'High';
+    END IF;
+    
+    RETURN level;
+END ; &&
+SELECT ufn_get_salary_level(35000) AS salary_level; &&
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+VERSIUNEA Mea care nu e buna: 
+
+DELIMITER &&
+CREATE PROCEDURE `ufn_get_salary_level`(`given_salary` DECIMAL(10, 2))
+BEGIN
+SELECT e.`salary`,
+        CASE
+            WHEN e.`salary` < 30000 THEN 'Low'
+            WHEN e.`salary` BETWEEN 30000 AND 50000 THEN 'Average'
+            WHEN e.`salary` > 50000 THEN 'High'
+        END AS 'salary_level'
+    FROM `employees` AS e
+    WHERE `salary` = `given_salary`;
+
+END; &&
+
+CALL `ufn_get_salary_level`(35000); &&
+
+
+

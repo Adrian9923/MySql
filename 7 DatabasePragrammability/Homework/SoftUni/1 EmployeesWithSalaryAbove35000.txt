@@ -1,0 +1,21 @@
+TASK: Use the database that is called "SoftUni Database".
+
+Write a stored procedure usp_get_employees_salary_above_35000.
+
+It should return the first and last names of all employees with a salary above 35000.
+
+The result must be sorted alphabetically (by first_name, then by last_name) as a first criterion and by id in ascending order as a second criterion.
+
+
+
+DELIMITER &&
+CREATE PROCEDURE `usp_get_employees_salary_above_35000`()
+BEGIN
+SELECT `first_name`, `last_name`
+FROM `employees`
+WHERE `salary` > 35000
+ORDER BY `first_name`, `last_name`, `employee_id`;
+
+END; &&
+
+CALL `usp_get_employees_salary_above_35000`(); &&

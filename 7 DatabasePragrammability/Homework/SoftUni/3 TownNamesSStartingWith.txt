@@ -1,0 +1,20 @@
+TASK: Write a stored procedure usp_get_towns_starting_with that accepts a string parameter and returns all town names starting with that string.
+
+The result should be sorted alphabetically by town_name.
+
+Example
+Here is the list of all town names starting with "b".
+
+
+
+DELIMITER &&
+CREATE PROCEDURE `usp_get_towns_starting_with`(`given_letter` VARCHAR(30))
+BEGIN
+SELECT `name` AS 'town_name'
+FROM `towns`
+WHERE `name` LIKE CONCAT(`given_letter`, '%')
+ORDER BY `town_name`;
+
+END; &&
+
+CALL `usp_get_towns_starting_with`('b'); &&

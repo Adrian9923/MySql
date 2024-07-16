@@ -1,0 +1,25 @@
+TASK: Write a ufn_count_employees_by_town(town_name) function that accepts a town_name parameter and returns the count of employees living in the given town.
+
+Example
+The following example displays the count of employees living in Sofia.
+
+count
+
+3
+
+
+DELIMITER &&
+CREATE FUNCTION `ufn_count_employees_by_town`(`town_name` VARCHAR(30)) RETURNS INT DETERMINISTIC
+BEGIN
+DECLARE `employee_count` INT;
+      SET `employee_count` := (
+       SELECT COUNT(`employee_id`)
+       FROM `employees` AS e
+       JOIN `addresses` AS a ON a.`address_id` = e.`address_id`
+       JOIN `towns` AS t ON t.`town_id` = a.`town_id`
+       WHERE t.`name` = `town_name`
+      );
+      RETURN `employee_count`;
+END; &&
+
+SELECT `ufn_count_employees_by_town`('Sofia');

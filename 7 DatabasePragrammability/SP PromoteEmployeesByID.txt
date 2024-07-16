@@ -1,0 +1,27 @@
+TASK: Write a stored procedure usp_raise_salary_by_id(id) that raises the salary of a given employee (found by using their id) by 5%.
+
+Keep in mind that you cannot promote a non-existent employee - if that happens, the database should be left unchanged.
+
+Example
+The following example is the result of calling the procedure with an employee_id of 17.
+
+first_name
+14175.0000
+
+
+DELIMITER &&
+
+CREATE PROCEDURE `usp_raise_salary_by_id`(`id` INT)
+BEGIN
+
+UPDATE `employees`
+SET `salary` = `salary` * 1.05
+WHERE `employee_id` = `id`;
+
+END; &&
+
+CALL `usp_raise_salary_by_id`(17); &&
+
+SELECT `salary`
+FROM `employees`
+WHERE `employee_id` = 17;

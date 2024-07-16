@@ -1,0 +1,45 @@
+TASK: Write a stored procedure usp_raise_salaries(department_name) that raises the salaries of all employees in the given department by 5%.
+
+Example
+The following table displays employees in the "Finance" department, ordered by first_name as a first criterion and by salary as a second criterion.
+
+first_name	
+salary
+Barbara
+
+27 720.00
+
+Bryan
+
+19 950.00
+
+Candy
+
+19 950.00
+
+...
+
+...
+
+
+
+DELIMITER && 
+CREATE PROCEDURE `usp_raise_salaries`(`department_name` VARCHAR(30))
+BEGIN
+UPDATE `employees` AS e
+JOIN `departments` AS d ON e.`department_id` = d.`department_id`
+SET e.`salary` = e.`salary` * 1.05
+WHERE d.`name` = `department_name`;
+
+
+END; &&
+
+
+
+
+CALL `usp_raise_salaries`('Finance'); &&
+
+SELECT e.`first_name`, e.`salary` FROM `employees` AS e
+JOIN `departments` AS d ON e.`department_id` = d.`department_id`
+WHERE d.`name` = 'Finance'
+ORDER BY e.`first_name`, e.`salary`;

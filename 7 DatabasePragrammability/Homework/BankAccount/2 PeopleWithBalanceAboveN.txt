@@ -1,0 +1,24 @@
+TASK: Use the database that is called "Bank Database".
+
+Your task is to write a stored procedure usp_get_holders_with_balance_higher_than that accepts a number as a parameter and returns all people whose balance (in all of their accounts, combined) is above the supplied number.
+
+Sort the result in ascending order by account_holders_id.
+
+Example
+The supplied number for that example is 7000.
+
+
+
+DELIMITER &&
+CREATE PROCEDURE `usp_get_holders_with_balance_higher_than`(`value` INT)
+BEGIN
+SELECT  ah.`first_name`, ah.`last_name`
+FROM `account_holders` AS ah
+JOIN  `accounts` AS a ON a.`account_holder_id` = ah.`id`
+GROUP BY a.`account_holder_id`
+HAVING SUM(a.`balance`) > `value`		
+ORDER BY `account_holder_id`;
+
+END; &&
+
+CALL `usp_get_holders_with_balance_higher_than`(7000);&&

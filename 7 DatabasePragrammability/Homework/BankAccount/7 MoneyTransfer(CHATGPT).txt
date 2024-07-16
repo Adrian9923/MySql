@@ -1,0 +1,93 @@
+TASK: Use the database that is called "Bank Database".
+Write a stored procedure usp_transfer_money(from_account_id, to_account_id, amount) that transfers money from one account to another.
+
+Consider the cases when:
+
+One of the account_ids is invalid
+
+The amount of money is a negative number
+
+The transfer is requested from and to the same account
+
+The outgoing balance is enough and both account_ids are different
+
+Verify that the whole procedure passes without errors.
+
+If an error occurs, leave the database unchanged.
+
+You must guarantee exact results, working with precision of four decimal places.
+
+Example
+Here is the result for from_account_id = 1, to_account_id = 2 and money_amount = 10.
+
+account_id	
+account_holder_id	
+balance
+1
+
+1
+
+113.1200
+
+2
+
+3
+
+4364.2300
+
+
+
+DELIMITER $$
+
+CREATE PROCEDURE `usp_transfer_money`(IN from_account_id INT, IN to_account_id INT, IN amount DECIMAL(19, 4))
+BEGIN
+    DECLARE from_balance DECIMAL(19, 4);
+    DECLARE to_balance DECIMAL(19, 4);
+    
+    -- Check if the account_ids are valid and different
+    IF from_account_id IS NULL OR to_account_id IS NULL OR from_account_id = to_account_id THEN
+        SELECT 'Invalid account_ids' AS 'status';
+        LEAVE;
+    END IF;
+
+    -- Check if the amount is positive
+    IF amount <= 0 THEN
+        SELECT 'Invalid amount' AS 'status';
+        LEAVE;
+    END IF;
+
+    -- Retrieve the balances of the from and to accounts
+    SELECT balance INTO from_balance
+    FROM accounts
+    WHERE id = from_account_id;
+    
+    SELECT balance INTO to_balance
+    FROM accounts
+    WHERE id = to_account_id;
+
+    -- Check if the from account has enough balance
+    IF from_balance < amount THEN
+        SELECT 'Insufficient balance' AS 'status';
+        LEAVE;
+    END IF;
+
+    -- Perform the transfer
+    BEGIN
+        -- Start a transaction
+        START TRANSACTION;
+
+        -- Update the balances
+        UPDATE accounts SET balance = from_balance - amount WHERE id = from_account_id;
+        UPDATE accounts SET balance = to_balance + amount WHERE id = to_account_id;
+
+        -- Commit the transaction
+        COMMIT;
+    END;
+
+    -- Retrieve the updated balances
+    SELECT id AS 'account_id', balance
+    FROM accounts
+    WHERE id IN (from_account_id, to_account_id);
+END $$
+
+DELIMITER ;
