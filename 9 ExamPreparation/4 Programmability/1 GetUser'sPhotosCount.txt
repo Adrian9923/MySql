@@ -1,0 +1,21 @@
+TASK: Create a user-defined function with the name udf_users_photos_count(username VARCHAR(30)) that receives a username and returns the number of photos this user has upload.
+
+
+DELIMITER &&
+CREATE FUNCTION `udf_users_photos_count`(`user` VARCHAR(30)) RETURNS INT DETERMINISTIC
+BEGIN
+	DECLARE `get_user_id` INT;
+    
+    SET `get_user_id` = (
+		SELECT `id` FROM `users` WHERE `username` = `user`
+    );
+    
+    RETURN (
+		SELECT
+			COUNT(`photo_id`)
+		FROM `users_photos`
+		WHERE `user_id` = `get_user_id`
+    );
+END; &&
+
+SELECT udf_users_photos_count('ssantryd') AS photosCount; &&

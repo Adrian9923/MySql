@@ -1,0 +1,28 @@
+TASK:Extract from the database, photos id with their likes and comments.
+
+Order them by the count of likes descending, then by comments count descending and lastly by photo-id ascending.
+
+Required Columns
+
+"photo_id"
+
+"likes_count"
+
+"comments_count"
+
+
+
+
+SELECT p.`id` AS 'photo_id', (
+ SELECT COUNT(l.`id`)
+ FROM `likes` AS l
+ WHERE l.`photo_id` = p.`id`
+) AS 'likes_count',
+(
+	SELECT COUNT(c.`id`)
+    FROM `comments` AS c
+    WHERE c.`photo_id` = p.`id`
+) AS 'comments_count'
+FROM `photos` AS p	
+GROUP BY p.`id`
+ORDER BY `likes_count` DESC, `comments_count` DESC, p.`id`;

@@ -1,0 +1,20 @@
+Rename those countries, which meet the following conditions:
+
+If the country name starts with 'B' - change it to 'Blocked'
+
+If the country name starts with 'T' - change it to 'Test'
+
+If the country name starts with 'P' - change it to 'In Progress'
+
+
+
+SET SQL_SAFE_UPDATES = 0;
+UPDATE `addresses`
+SET `country` = (
+	CASE
+		WHEN LEFT(`country`, 1) = 'B' THEN 'Blocked'
+        WHEN LEFT(`country`, 1) = 'T' THEN 'Test'
+        WHEN LEFT(`country`, 1) = 'P' THEN 'In Progress'
+        ELSE `country`
+	END
+);

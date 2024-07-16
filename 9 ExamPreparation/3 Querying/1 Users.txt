@@ -1,0 +1,18 @@
+Extract from the Insta Database (instd), info about all the users.
+
+Order the results by age descending than by username ascending.
+
+Required Columns:
+
+"username"
+
+"gender"
+
+"age"
+
+
+
+
+SELECT `username`, `gender`, `age`
+FROM `users`
+ORDER BY `age` DESC, `username`;
