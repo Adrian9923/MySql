@@ -1,0 +1,17 @@
+TASK: Use the database that is called "BookLibrary Databases".
+
+Write an SQL query to calculate the lifetimes of the authors in days.
+
+NULL values indicate that the author is still alive.
+
+
+SELECT CONCAT_WS(' ',`first_name`, `last_name`) AS 'Full Name',
+    TIMESTAMPDIFF(day, `born`, `died`) AS `Days Lived`
+    FROM `authors`;
+
+
+V2:
+
+SELECT CONCAT_WS(' ',`first_name`, `last_name`) AS 'Full Name',
+    DATEDIFF(`died`, `born`) AS `Days Lived`
+    FROM `authors`;

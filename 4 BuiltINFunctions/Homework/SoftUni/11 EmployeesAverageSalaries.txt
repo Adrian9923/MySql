@@ -1,0 +1,45 @@
+TASK: Select all highly paid employees who earn more than 30000 and store them in a new table.
+
+Then, delete all highly paid employees with a manager_id of 42 from it.
+
+After that, increase with 5000 the salaries of all employees with a department_id of 1.
+
+Finally, select the average salary in each department.
+
+Order the result by department_id in ascending order.
+
+ASA E BUN
+SET SQL_SAFE_UPDATES = 0;
+CREATE TABLE `highly_paid_employees` AS
+SELECT *
+FROM `employees`
+WHERE `salary` > 30000;
+DELETE FROM `highly_paid_employees`
+WHERE `manager_id` = 42;
+UPDATE `highly_paid_employees`
+SET `salary` = `salary` + 5000
+WHERE `department_id` = 1;
+SELECT `department_id`, AVG(`salary`) AS 'avg_salary'
+FROM `highly_paid_employees`
+WHERE `manager_id` IS NOT NULL
+GROUP BY `department_id`
+ORDER BY `department_id`;
+
+
+
+
+
+V1 Cu VIEW DAR NU BUN
+
+CREATE VIEW `top_paid_employees` AS
+SELECT * FROM `employees`
+WHERE `salary` > 30000;
+DELETE FROM `top_paid_employees`
+WHERE `manager_id` = 42;
+UPDATE `top_paid_employees`
+SET `salary` = `salary` + 5000
+WHERE `department_id` = 1;
+SELECT `department_id`, AVG(`salary`) AS 'avg_salary'
+FROM `top_paid_employees`
+GROUP BY `department_id`
+ORDER BY `department_id`;

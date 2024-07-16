@@ -1,0 +1,10 @@
+TASK: Write an SQL query that creates a view named v_employees_hired_after_2000 with the first and the last names of all employees hired after the year 2000.
+
+Select all from the generated view.
+
+
+
+CREATE VIEW `v_employees_hired_after_2000` AS
+SELECT `first_name`, `last_name` FROM `employees`
+WHERE EXTRACT(YEAR FROM `hire_date`) > 2000;
+SELECT * FROM `v_employees_hired_after_2000`;

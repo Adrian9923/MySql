@@ -1,0 +1,10 @@
+TASK: Write an SQL query that finds all towns that do not start with the letters R, B, or D (case-insensitive).
+
+Order them alphabetically by name.
+
+
+
+
+SELECT * FROM `towns`
+WHERE `name` NOT LIKE('R%') AND `name` NOT LIKE('B%') AND `name` NOT LIKE('D%')
+ORDER BY `name`;

@@ -1,0 +1,18 @@
+TASK: Use the database that is called "Restaurant Databases".
+
+Write a query to retrieve the count of all appetizers (category id = 2) with a price higher than 8.
+
+
+SELECT COUNT(`category_id`)
+FROM `products`
+WHERE `price` > 8
+GROUP BY `category_id`
+HAVING `category_id` = 2;
+
+SAU ASA
+
+SELECT COUNT(*)
+FROM `products`
+WHERE `price` > 8
+GROUP BY `category_id`
+HAVING `category_id` = 2;

@@ -1,0 +1,11 @@
+TASK: Select all deposit groups and their total deposit sums but only for the wizards with magic wands crafted by Ollivander family.
+
+Order the result by deposit_group alphabetically.
+
+
+
+SELECT `deposit_group`, SUM(`deposit_amount`) AS 'total_sum'
+FROM `wizard_deposits`
+WHERE `magic_wand_creator` = 'Ollivander family'
+GROUP BY `deposit_group`
+ORDER BY `deposit_group`;

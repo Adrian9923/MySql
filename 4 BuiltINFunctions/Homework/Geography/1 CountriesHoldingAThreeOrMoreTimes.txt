@@ -1,0 +1,18 @@
+TASK: Get familiar with the Geography database.
+
+You will use it for the following tasks.
+
+Description
+Find all countries that contain the letter 'A' in their names at least 3 times (case-insensitive).
+
+Order them by ISO code.
+
+Display the country name and the ISO code.
+
+
+SELECT `country_name`, `iso_code` FROM `countries`
+WHERE `country_name` LIKE '%a%a%a%'
+ORDER BY `iso_code`;
+
+
+

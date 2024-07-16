@@ -1,0 +1,30 @@
+TASK: Use the database that is called "SoftUni Databases".
+
+That is it! You no longer work for Mr. Bodrog.
+
+You have now decided to pursue a career as an analyst in SoftUni.
+
+It comes as no surprise that you will use the soft_uni database.
+
+Description
+Your task is to select the minimum salary from employees that are both:
+
+from the departments with an ID of 2, 5, or 7
+
+hired after 01/01/2000
+
+Order the result by department_id in ascending order.
+
+Your query should return:
+
+department_id
+
+minimum_salary
+
+
+
+SELECT `department_id` , MIN(`salary`) AS 'minimum_salary'
+FROM `employees`
+WHERE `department_id` IN(2,5,7) AND `hire_date` > '2000-01-01'
+GROUP BY `department_id`
+ORDER BY `department_id`;

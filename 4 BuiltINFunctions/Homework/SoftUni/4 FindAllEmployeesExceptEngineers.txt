@@ -1,0 +1,9 @@
+TASK: Write an SQL query that finds the first and last names of all employees whose job titles do not contain "engineer".
+
+Order the information by id.
+
+
+
+SELECT `first_name`, `last_name`
+FROM `employees`
+WHERE NOT(`job_title` LIKE('%engineer%'));

@@ -1,0 +1,8 @@
+TASK: Use the database that is called "BookLibrary Databases".
+
+Write an SQL query to sum the prices of all books.
+
+Format the output to 2 digits after the decimal point.
+
+
+SELECT ROUND(SUM(`cost`),2) FROM `books`;

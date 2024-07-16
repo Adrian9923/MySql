@@ -1,0 +1,12 @@
+TASK: Write an SQL query that finds all employees whose last names contain "ei" (case-insensitive).
+
+Display their first and last names.
+
+Order the information by id.
+
+
+
+SELECT `first_name`, `last_name` 
+FROM `employees`
+WHERE `last_name` LIKE '%ei%'
+ORDER BY `employee_id`;

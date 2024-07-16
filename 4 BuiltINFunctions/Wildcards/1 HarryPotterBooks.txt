@@ -1,0 +1,16 @@
+TASK: Use the database that is called "BookLibrary Databases".
+
+Write an SQL query to retrieve the titles of all Harry Potter books.
+
+Order the information by id.
+
+SELECT `title` FROM `books`
+    WHERE `title` LIKE 'Harry Potter%'
+    ORDER BY `id`;
+
+
+SAU ASA:
+
+SELECT `title` FROM `books`
+    WHERE `title` LIKE '%Harry Potter%'
+    ORDER BY `id`;

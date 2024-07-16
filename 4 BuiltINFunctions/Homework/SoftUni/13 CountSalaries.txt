@@ -1,0 +1,10 @@
+TASK: 
+
+Count the salaries of all employees who do not have a manager.
+
+
+
+
+SELECT COUNT(`salary`)
+FROM `employees`
+WHERE `manager_id` IS NULL;

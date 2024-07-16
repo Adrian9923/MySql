@@ -1,0 +1,14 @@
+TASK: Select all deposit groups and their total deposit sums but only for the wizards with magic wands crafted by Ollivander family.
+
+After that, filter the deposit sums lower than 150000.
+
+Order by total_sum in descending order.
+
+
+
+SELECT `deposit_group`, SUM(`deposit_amount`) AS 'total_sum'
+FROM `wizard_deposits`
+WHERE `magic_wand_creator` = 'Ollivander family'
+GROUP BY `deposit_group`
+HAVING `total_sum` < 150000
+ORDER BY `total_sum` DESC;

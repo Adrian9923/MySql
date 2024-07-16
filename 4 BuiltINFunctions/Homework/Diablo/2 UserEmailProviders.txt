@@ -1,0 +1,14 @@
+TASK: Find information about the email providers of all users.
+
+Display the user_name and the email provider.
+
+Order the results alphabetically by the email provider, then by username.
+
+
+
+SELECT `user_name`, SUBSTRING_INDEX(email, '@', -1) AS 'Email Provider' 
+FROM `users`
+ORDER BY `Email Provider`, `user_name`;
+
+
+In this query, the SUBSTRING_INDEX(email, '@', -1) function is used to extract the portion of the email after the '@' symbol, which represents the email provider. By using -1 as the count argument, it selects the rightmost portion of the string after the last occurrence of '@'.

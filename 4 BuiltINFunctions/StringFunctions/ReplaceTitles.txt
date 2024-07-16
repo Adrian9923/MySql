@@ -1,0 +1,13 @@
+TASK: Use the database that is called "BookLibrary Databases".
+
+Write an SQL query that finds books which titles start with "The".
+
+Replace the substring with 3 asterisks and retrieve the updated titles.
+
+Order the result by id.
+
+
+
+SELECT REPLACE(`title`, 'The', '***') AS 'Title'
+    FROM `books`
+    WHERE `title` LIKE 'The%';

@@ -1,0 +1,16 @@
+TASK: Get familiar with the SoftUni database.
+
+You will use it for the following tasks.
+
+Description
+Write an SQL query that finds all employees whose first names start with "Sa" (case-insensitive).
+
+Display their first and last names.
+
+Order the information by id.
+
+
+SELECT `first_name`, `last_name` 
+FROM `employees`
+WHERE `first_name` LIKE 'Sa%'
+ORDER BY `employee_id`;

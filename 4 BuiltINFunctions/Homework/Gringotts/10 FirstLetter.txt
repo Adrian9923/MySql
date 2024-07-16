@@ -1,0 +1,13 @@
+TASK: Write a query that returns all unique first letters of wizards’ first names, but only if they have made a deposit of type Troll Chest.
+
+Order them alphabetically.
+
+Use GROUP BY to ensure the uniqueness of the entries.
+
+
+
+SELECT LEFT(`first_name`,1) AS 'first_letter'
+FROM `wizard_deposits`
+WHERE `deposit_group` = 'Troll Chest'
+GROUP BY `first_letter`
+ORDER BY `first_letter`;

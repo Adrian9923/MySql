@@ -1,0 +1,13 @@
+TASK: Use the database that is called "Restaurant Databases".
+
+Write a query to calculate the average salary in each department.
+
+Order the information by department_id.
+
+Round the result to two digits after the decimal point.
+
+
+SELECT `department_id` , ROUND(AVG(`salary`), 2) AS 'Average Salary'
+FROM `employees`
+GROUP BY `department_id`
+ORDER BY `department_id`;

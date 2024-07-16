@@ -1,0 +1,7 @@
+TASK:Select the deposit group with the smallest average wand size.
+
+
+SELECT `deposit_group` FROM `wizard_deposits`
+GROUP BY `deposit_group`
+HAVING AVG(`magic_wand_size`)
+LIMIT 1;

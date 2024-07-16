@@ -1,0 +1,36 @@
+TASK:  Find all games with their corresponding part of the day and duration.
+
+There are three parts of the day:
+
+Morning - the time is >= 0 and < 12
+
+Afternoon - the time is >= 12 and < 18
+
+Evening - the time is >= 18 and < 24
+
+The duration should be:
+
+Extra Short - smaller than or equal to 3
+
+Short - between 3 and 6 (inclusive)
+
+Long - between 6 and 10 (inclusive)
+
+Extra Long - in any other cases or without duration
+
+
+
+
+SELECT `name` AS 'game',
+CONCAT(
+    CASE WHEN EXTRACT(HOUR FROM `start`) BETWEEN 0 AND 11 THEN 'Morning' ELSE '' END,
+    CASE WHEN EXTRACT(HOUR FROM `start`) BETWEEN 12 AND 17 THEN 'Afternoon' ELSE '' END,
+    CASE WHEN EXTRACT(HOUR FROM `start`) BETWEEN 18 AND 23 THEN 'Evening' ELSE '' END
+  ) AS 'Part of the Day',
+  CONCAt(
+  CASE WHEN `duration` <= 3 THEN 'Extra Short' ELSE '' END,
+  CASE WHEN `duration` BETWEEN 4 AND 6 THEN 'Short' ELSE '' END,
+  CASE WHEN `duration` BETWEEN 7 AND 10 THEN 'Long' ELSE '' END,
+  CASE WHEN `duration` > 10 OR `duration` IS NULL THEN 'Extra Long' ELSE '' END
+  ) AS `Duration`
+FROM `games`;

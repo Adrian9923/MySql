@@ -1,0 +1,12 @@
+TASK: Use the database that is called "Restaurant Databases".
+
+Write an SQL query to retrieve information about the departments grouped by department_id with a minimum salary above 800.
+
+Round the resulting salary to two digits after the decimal point.
+
+
+
+SELECT `department_id` , ROUND(MIN(`salary`), 2) AS 'Min Salary'
+FROM `employees`
+GROUP BY `department_id`
+HAVING `Min Salary` > 800;

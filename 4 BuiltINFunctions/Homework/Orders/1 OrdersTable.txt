@@ -1,0 +1,19 @@
+TASK: Get familiar with the Orders database.
+
+You will use it for the following tasks.
+
+Description
+You will receive an orders (id, product_name, order_date) table filled with data.
+
+Consider that the payment for an order must be processed within 3 days of the order date.
+
+The delivery date has a limit of 1 month.
+
+Write a query to display each product's name, order date, payment and delivery due dates.
+
+
+
+SELECT `product_name`, `order_date`,
+DATE_ADD(`order_date`, INTERVAL 3 DAY) AS 'pay_due',
+DATE_ADD(`order_date`, INTERVAL 1 MONTH) AS 'deliver_due'
+FROM `orders`;

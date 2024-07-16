@@ -1,0 +1,10 @@
+TASK: Select all deposit groups and the total deposit sum of each group.
+
+Order result by total_sum in ascending order.
+
+
+
+SELECT `deposit_group`, SUM(`deposit_amount`) AS 'total_sum'
+FROM `wizard_deposits`
+GROUP BY `deposit_group`
+ORDER BY `total_sum`;

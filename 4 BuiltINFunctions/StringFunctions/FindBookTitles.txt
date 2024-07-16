@@ -1,0 +1,25 @@
+TAKS: Use the database that is called "BookLibrary Databases".
+
+Familiarize yourself with the booklibrary database.
+
+You will use it in the following exercises.
+
+Write an SQL query to find books which titles begin with "The".
+
+Order the result by id.
+
+
+ SELECT `title` FROM `books`
+    WHERE SUBSTRING(`title`, 1, 3) = 'The'
+    ORDER BY `id`;
+
+SAU
+
+ SELECT `title` FROM `books`
+    WHERE SUBSTRING(`title`, 1, 3) LIKE 'The'
+    ORDER BY `id`;
+
+SAU
+SELECT `title` FROM `books`
+    WHERE `title` LIKE 'The%'
+    ORDER BY `id`;

@@ -1,0 +1,14 @@
+TASK: Use the database that is called "Restaurant Databases".
+
+You will use it in the following assignments.
+
+Write an SQL query to count the number of employees in each department by id.
+
+Order the information by deparment_id, then by the number of employees.
+
+
+
+SELECT `department_id`, COUNT(`id`) AS 'Number of employees'
+FROM `employees`
+GROUP BY `department_id`
+ORDER BY `department_id`, `Number of employees`;

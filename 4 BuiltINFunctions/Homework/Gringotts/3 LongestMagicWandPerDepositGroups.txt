@@ -1,0 +1,11 @@
+TASK: For the wizards in each deposit group, show the longest magic wand.
+
+Order the result by longest magic wand for each deposit group in ascending order, then by deposit_group alphabetically.
+
+Choose a fitting name for the new column.
+
+
+SELECT `deposit_group`,MAX(`magic_wand_size`) AS 'longest_magic_wand'
+FROM `wizard_deposits`
+GROUP BY `deposit_group`
+ORDER BY `longest_magic_wand`, `deposit_group`;

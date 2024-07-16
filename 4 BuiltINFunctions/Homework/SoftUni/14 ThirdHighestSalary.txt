@@ -1,0 +1,31 @@
+TASK: Find the third-highest salary in each department, if such exists.
+
+Order the result by department_id in ascending order.
+
+
+SELECT `department_id`, ROUND(MAX(`salary`),2) AS 'third_highest_salary'
+FROM (
+    SELECT `department_id`, `salary`,
+    ROW_NUMBER() OVER (PARTITION BY `department_id` ORDER BY `salary` DESC) AS 'row_num'
+    FROM employees
+) AS `subquery`
+WHERE `row_num` = 3
+GROUP BY `department_id`
+ORDER BY `department_id`; 
+This query uses a subquery and the ROW_NUMBER() function to assign a row number to each salary within each department, ordered by the salary in descending order. Then, in the outer query, we filter for rows where the row number is 3, indicating the third-highest salary. Finally, we group the results by the department_id and order them by department_id.
+
+
+
+SAU
+
+SELECT department_id, salary AS third_highest_salary
+FROM (
+    SELECT department_id, salary,
+    DENSE_RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS rank
+    FROM employees
+) AS subquery
+WHERE rank = 3
+ORDER BY department_id;
+In this approach, we use the DENSE_RANK() function instead of ROW_NUMBER(). The DENSE_RANK() function assigns a rank to each salary within each department, considering ties and leaving no gaps in the ranking.
+
+The outer query then filters for rows where the rank is 3, indicating the third-highest salary. Finally, the results are ordered by department_id.
